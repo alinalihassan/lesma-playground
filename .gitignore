@@ -1,0 +1,7 @@
+build/
+.idea/
+.vscode/
+cmake-build-debug/
+
+.DS_Store
+stress_test.sh
