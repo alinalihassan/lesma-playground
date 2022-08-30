@@ -2,7 +2,7 @@ import * as monaco from 'monaco-editor';
 import { MonacoSettings } from '~/services/config';
 import { getFontFamily, getDefaultFontFamily } from '~/services/fonts';
 
-export const LANGUAGE_GOLANG = 'go';
+export const LANGUAGE_LESMA = 'lesma';
 
 export const DEMO_CODE = [
   'package main\n',

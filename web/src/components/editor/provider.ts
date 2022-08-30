@@ -1,5 +1,6 @@
 import * as monaco from 'monaco-editor';
 import { IAPIClient } from '~/services/api';
+import { LANGUAGE_LESMA } from './props';
 import snippets from './snippets';
 
 // Import aliases
@@ -86,10 +87,10 @@ class GoCompletionItemProvider implements monaco.languages.CompletionItemProvide
 
 export const registerGoLanguageProvider = (client: IAPIClient) => {
   if (alreadyRegistered) {
-    console.warn('Go Language provider was already registered');
+    console.warn('Lesma Language provider was already registered');
     return;
   }
 
   alreadyRegistered = true;
-  return monaco.languages.registerCompletionItemProvider('go', new GoCompletionItemProvider(client));
+  return monaco.languages.registerCompletionItemProvider(LANGUAGE_LESMA, new GoCompletionItemProvider(client));
 };

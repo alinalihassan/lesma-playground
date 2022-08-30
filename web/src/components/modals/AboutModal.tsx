@@ -57,7 +57,7 @@ export default function AboutModal(props: AboutModalProps) {
       </div>
       <div id={SUB_TITLE_ID} className={contentStyles.body}>
         <div className={modalStyles.title}>
-          Better Go Playground
+          Lesma Playground
         </div>
         <div className={modalStyles.footer}>
           <Link href={config.githubUrl} target='_blank'>GitHub</Link>

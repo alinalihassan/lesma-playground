@@ -6,11 +6,6 @@ import config from './config';
 const apiAddress = `${config.serverUrl}/api`;
 const axiosClient = axios.default.create({ baseURL: apiAddress });
 
-export enum PlaygroundBackend {
-  Default = '',
-  GoTip = 'gotip'
-}
-
 export enum EvalEventKind {
   Stdout = 'stdout',
   Stderr = 'stderr'
@@ -65,15 +60,6 @@ export interface IAPIClient {
   shareSnippet(code: string): Promise<ShareResponse>
 }
 
-export const instantiateStreaming = async (resp, importObject) => {
-  if ('instantiateStreaming' in WebAssembly) {
-    return await WebAssembly.instantiateStreaming(resp, importObject);
-  }
-
-  const source = await (await resp).arrayBuffer();
-  return await WebAssembly.instantiate(source, importObject);
-};
-
 class Client implements IAPIClient {
   get axiosClient() {
     return this.client;
@@ -105,12 +91,12 @@ class Client implements IAPIClient {
     return resp;
   }
 
-  async evaluateCode(code: string, format: boolean, backend = PlaygroundBackend.Default): Promise<RunResponse> {
-    return this.post<RunResponse>(`/run?format=${Boolean(format)}&backend=${backend}`, code);
+  async evaluateCode(code: string, format: boolean): Promise<RunResponse> {
+    return this.post<RunResponse>(`/run?format=${Boolean(format)}&backend=`, code);
   }
 
-  async formatCode(code: string, backend = PlaygroundBackend.Default): Promise<RunResponse> {
-    return this.post<RunResponse>(`/format?backend=${backend}`, code);
+  async formatCode(code: string): Promise<RunResponse> {
+    return this.post<RunResponse>(`/format?backend=`, code);
   }
 
   async getSnippet(id: string): Promise<Snippet> {

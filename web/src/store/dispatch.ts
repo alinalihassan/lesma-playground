@@ -2,7 +2,6 @@ import {saveAs} from 'file-saver';
 import {push} from 'connected-react-router';
 import {
   Action,
-  ActionType,
   MonacoParamsChanges,
   newBuildParamsChangeAction,
   newBuildResultAction,
@@ -12,18 +11,12 @@ import {
   newMonacoParamsChangeAction,
   newPanelStateChangeAction,
   newSettingsChangeAction,
-  newProgramWriteAction,
   newToggleThemeAction,
   newUIStateChangeAction
 } from './actions';
-import client, {
-  EvalEventKind,
-  instantiateStreaming,
-  PlaygroundBackend
-} from '~/services/api';
+import client from '~/services/api';
 import config, {RuntimeType} from '~/services/config';
 import {DEMO_CODE} from '~/components/editor/props';
-import {getImportObject, goRun} from '~/services/go';
 import {PanelState, SettingsState, State} from './state';
 import {isDarkModeEnabled} from "~/utils/theme";
 
@@ -143,24 +136,9 @@ export const runFileDispatcher: Dispatcher =
     try {
       const { settings, editor } = getState();
       switch (settings.runtime) {
-        case RuntimeType.GoPlayground:
+        case RuntimeType.LesmaPlayground:
           const res = await client.evaluateCode(editor.code, settings.autoFormat);
           dispatch(newBuildResultAction(res));
-          break;
-        case RuntimeType.GoTipPlayground:
-          const rsp = await client.evaluateCode(editor.code, settings.autoFormat, PlaygroundBackend.GoTip);
-          dispatch(newBuildResultAction(rsp));
-          break;
-        case RuntimeType.WebAssembly:
-          let resp = await client.build(editor.code, settings.autoFormat);
-          let wasmFile = await client.getArtifact(resp.fileName);
-          let instance = await instantiateStreaming(wasmFile, getImportObject());
-          dispatch({ type: ActionType.EVAL_START });
-          dispatch(newBuildResultAction({ formatted: resp.formatted, events: [] }));
-          goRun(instance)
-            .then(result => console.log('exit code: %d', result))
-            .catch(err => console.log('err', err))
-            .finally(() => dispatch({ type: ActionType.EVAL_FINISH }));
           break;
         default:
           dispatch(newErrorAction(`AppError: Unknown Go runtime type "${settings.runtime}"`));
@@ -174,11 +152,8 @@ export const formatFileDispatcher: Dispatcher =
   async (dispatch: DispatchFn, getState: StateProvider) => {
     dispatch(newLoadingAction());
     try {
-      // Format code using GoTip is enabled to support
-      // any syntax changes from unstable Go specs.
-      const { editor: {code}, settings: { runtime } } = getState();
-      const backend = runtime === RuntimeType.GoTipPlayground ? PlaygroundBackend.GoTip : PlaygroundBackend.Default;
-      const res = await client.formatCode(code, backend);
+      const { editor: {code} } = getState();
+      const res = await client.formatCode(code);
 
       if (res.formatted) {
         dispatch(newBuildResultAction(res));
@@ -202,19 +177,3 @@ export const dispatchPanelLayoutChange = (changes: Partial<PanelState>): Dispatc
     dispatch(newPanelStateChangeAction(changes));
   }
 );
-
-//////////////////////////////////
-//          Adapters            //
-//////////////////////////////////
-
-export const createGoConsoleAdapter = (dispatch: DispatchFn) =>
-({
-  log: (eventType: EvalEventKind, message: string) => {
-    console.log('%s:\t%s', eventType, message);
-    dispatch(newProgramWriteAction({
-      Kind: eventType,
-      Message: message,
-      Delay: 0,
-    }));
-  }
-});

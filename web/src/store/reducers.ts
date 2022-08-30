@@ -99,7 +99,7 @@ const reducers = {
   }, {
     darkMode: config.darkThemeEnabled,
     autoFormat: true,
-    runtime: RuntimeType.GoPlayground,
+    runtime: RuntimeType.LesmaPlayground,
     useSystemTheme: config.useSystemTheme,
     enableVimMode: config.enableVimMode
   }),

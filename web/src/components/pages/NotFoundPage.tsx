@@ -33,9 +33,9 @@ const NotFoundPage: React.FC = () => {
         </div>
         <div className="gopher">
           { catVisible ? (
-            <img src="//http.cat/404" alt="😺" className="gopher__image" />
+            <img src="//http.cat/404" alt="😺" className="lesma__image" />
           ) : (
-            <img src="/gopher.svg" alt="Gopher" className="gopher__image" />
+            <img src="/logo.svg" alt="Lesma" className="lesma__image" />
           )}
         </div>
       </div>

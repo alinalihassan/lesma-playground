@@ -6,8 +6,7 @@ import ThemeableComponent from '@components/utils/ThemeableComponent';
 import AboutModal from '~/components/modals/AboutModal';
 import config from '~/services/config';
 import { getSnippetsMenuItems, SnippetMenuItem } from '~/utils/headerutils';
-import ChangeLogModal from '~/components/modals/ChangeLogModal';
-import SharePopup from '~/components/utils/SharePopup';
+// import SharePopup from '~/components/utils/SharePopup';
 import {
   Connect,
   Dispatcher,
@@ -21,21 +20,20 @@ import {
   newSettingsChangeDispatcher,
   runFileDispatcher,
   saveFileDispatcher,
-  shareSnippetDispatcher
+  // shareSnippetDispatcher
 } from '~/store';
 import './Header.css';
 
 /**
  * Uniquie class name for share button to use as popover target.
  */
-const BTN_SHARE_CLASSNAME = 'Header__btn--share';
+// const BTN_SHARE_CLASSNAME = 'Header__btn--share';
 
 interface HeaderState {
   showSettings?: boolean
   showAbout?: boolean
-  showChangelog?: boolean
   loading?: boolean
-  showShareMessage?: boolean
+  // showShareMessage?: boolean
 }
 
 interface Props {
@@ -61,9 +59,8 @@ export class Header extends ThemeableComponent<any, HeaderState> {
     this.state = {
       showSettings: false,
       showAbout: false,
-      showChangelog: false,
       loading: false,
-      showShareMessage: false
+      // showShareMessage: false
     };
   }
 
@@ -115,17 +112,17 @@ export class Header extends ThemeableComponent<any, HeaderState> {
           this.props.dispatch(runFileDispatcher);
         }
       },
-      {
-        key: 'share',
-        text: 'Share',
-        className: BTN_SHARE_CLASSNAME,
-        iconProps: { iconName: 'Share' },
-        disabled: this.props.loading,
-        onClick: () => {
-          this.setState({ showShareMessage: true });
-          this.props.dispatch(shareSnippetDispatcher);
-        }
-      },
+      // {
+      //   key: 'share',
+      //   text: 'Share',
+      //   className: BTN_SHARE_CLASSNAME,
+      //   iconProps: { iconName: 'Share' },
+      //   disabled: this.props.loading,
+      //   onClick: () => {
+      //     this.setState({ showShareMessage: true });
+      //     this.props.dispatch(shareSnippetDispatcher);
+      //   }
+      // },
       {
         key: 'download',
         text: 'Download',
@@ -150,17 +147,6 @@ export class Header extends ThemeableComponent<any, HeaderState> {
 
   get asideItems(): ICommandBarItemProps[] {
     return [
-      {
-        key: 'changelog',
-        text: 'What\'s new',
-        ariaLabel: 'Changelog',
-        iconOnly: true,
-        disabled: this.props.loading,
-        iconProps: { iconName: 'Giftbox' },
-        onClick: () => {
-          this.setState({ showChangelog: true });
-        }
-      },
       {
         key: 'format',
         text: 'Format Code',
@@ -234,17 +220,17 @@ export class Header extends ThemeableComponent<any, HeaderState> {
   }
 
   render() {
-    const { showShareMessage } = this.state;
-    const { snippetName } = this.props;
+    // const { showShareMessage } = this.state;
+    // const { snippetName } = this.props;
     return (
       <header
         className='header'
         style={{backgroundColor: this.theme.palette.white}}
       >
         <img
-          src='/go-logo-blue.svg'
+          src='/logo.svg'
           className='header__logo'
-          alt='Golang Logo'
+          alt='Lesma Logo'
         />
         <CommandBar
           className='header__commandBar'
@@ -253,12 +239,12 @@ export class Header extends ThemeableComponent<any, HeaderState> {
           overflowItems={this.overflowItems}
           ariaLabel='CodeEditor menu'
         />
-        <SharePopup
+        {/* <SharePopup
           visible={!!(showShareMessage && snippetName)}
           target={`.${BTN_SHARE_CLASSNAME}`}
           snippetId={snippetName}
           onDismiss={() => this.setState({ showShareMessage: false })}
-        />
+        /> */}
         <SettingsModal
           onClose={(args) => this.onSettingsClose(args)}
           isOpen={this.state.showSettings}
@@ -266,10 +252,6 @@ export class Header extends ThemeableComponent<any, HeaderState> {
         <AboutModal
           onClose={() => this.setState({ showAbout: false })}
           isOpen={this.state.showAbout}
-        />
-        <ChangeLogModal
-          onClose={() => this.setState({ showChangelog: false })}
-          isOpen={this.state.showChangelog}
         />
       </header>
     );

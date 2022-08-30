@@ -15,9 +15,7 @@ const PANEL_SETTINGS = 'ui.layout.panel';
 
 
 export enum RuntimeType {
-  GoPlayground    = 'GO_PLAYGROUND',
-  GoTipPlayground = 'GO_TIP_PLAYGROUND',
-  WebAssembly     = 'WASM'
+  LesmaPlayground = 'LESMA_PLAYGROUND'
 }
 
 export namespace RuntimeType {
@@ -27,12 +25,8 @@ export namespace RuntimeType {
     }
 
     switch (t) {
-      case RuntimeType.GoTipPlayground:
-        return "Go Playground (GoTip)";
-      case RuntimeType.GoPlayground:
-        return "Go Playground";
-      case RuntimeType.WebAssembly:
-        return "WebAssembly";
+      case RuntimeType.LesmaPlayground:
+        return "Lesma Playground";
       default:
         return RuntimeType[t];
     }
@@ -74,9 +68,9 @@ const Config = {
   _cache: {},
   appVersion: getVariableValue('VERSION', '1.0.0'),
   serverUrl: getVariableValue('LANG_SERVER', window.location.origin),
-  githubUrl: getVariableValue('GITHUB_URL', 'https://github.com/x1unix/go-playground'),
-  issueUrl: getVariableValue('ISSUE_URL', 'https://github.com/x1unix/go-playground/issues/new'),
-  donateUrl: getVariableValue('DONATE_URL', 'https://opencollective.com/bttr-go-playground'),
+  githubUrl: getVariableValue('GITHUB_URL', 'https://github.com/alinalihassan/lesma-playground'),
+  issueUrl: getVariableValue('ISSUE_URL', 'https://github.com/alinalihassan/lesma-playground/issues/new'),
+  donateUrl: getVariableValue('DONATE_URL', 'https://github.com/alinalihassan/Lesma'),
 
   get darkThemeEnabled(): boolean {
     if (this._cache[DARK_THEME_KEY]) {
@@ -121,7 +115,7 @@ const Config = {
     if (this._cache[RUNTIME_TYPE_KEY]) {
       return this._cache[RUNTIME_TYPE_KEY];
     }
-    return this.getValue<RuntimeType>(RUNTIME_TYPE_KEY, RuntimeType.GoPlayground);
+    return this.getValue<RuntimeType>(RUNTIME_TYPE_KEY, RuntimeType.LesmaPlayground);
   },
 
   set runtimeType(newVal: RuntimeType) {

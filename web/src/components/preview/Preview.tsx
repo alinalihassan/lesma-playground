@@ -28,8 +28,6 @@ export default class Preview extends ThemeableComponent<PreviewProps> {
   }
 
   render() {
-    // Some content should not be displayed in WASM mode (like delay, etc)
-    const isWasm = this.props.runtime === RuntimeType.WebAssembly;
     let content;
     if (this.props.lastError) {
       content = (
@@ -47,13 +45,11 @@ export default class Preview extends ThemeableComponent<PreviewProps> {
           message={Message}
           delay={Delay}
           kind={Kind}
-          showDelay={!isWasm}
+          showDelay={true}
         />
       ));
 
-      if (!isWasm) {
-        content.push(<div className="app-preview__epilogue" key="exit">Program exited.</div>)
-      }
+      content.push(<div className="app-preview__epilogue" key="exit">Program exited.</div>)
     } else {
       content = <span>Press "Run" to compile program.</span>;
     }

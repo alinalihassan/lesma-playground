@@ -18,7 +18,7 @@ import {
   newMarkerAction
 } from '~/store';
 import { Analyzer } from '~/services/analyzer';
-import { LANGUAGE_GOLANG, stateToOptions } from './props';
+import { LANGUAGE_LESMA, stateToOptions } from './props';
 
 const ANALYZE_DEBOUNCE_TIME = 500;
 
@@ -161,7 +161,7 @@ export default class CodeEditor extends React.Component<any, CodeEditorState> {
     const options = stateToOptions(this.props.options);
     return (
       <MonacoEditor
-        language={LANGUAGE_GOLANG}
+        language={LANGUAGE_LESMA}
         theme={this.props.darkMode ? 'vs-dark' : 'vs-light'}
         value={this.props.code}
         options={options}

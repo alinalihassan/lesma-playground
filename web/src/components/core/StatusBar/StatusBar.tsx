@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {editor} from 'monaco-editor';
-import {newEnvironmentChangeAction} from '~/store';
+// import {newEnvironmentChangeAction} from '~/store';
 import config, {RuntimeType} from '~/services/config';
 import EllipsisText from '~/components/utils/EllipsisText';
 import StatusBarItem from '~/components/core/StatusBar/StatusBarItem';
-import EnvironmentSelectModal from '~/components/modals/EnvironmentSelectModal';
 import VimStatusBarItem from '~/plugins/vim/VimStatusBarItem';
 import './StatusBar.css';
 
@@ -45,7 +44,7 @@ const getStatusItem = ({loading, lastError}) => {
 const StatusBar: React.FC<Props> = ({
   loading, lastError, runtime, markers, dispatch
 }) => {
-  const [ runSelectorModalVisible, setRunSelectorModalVisible ] = useState(false);
+  // const [ runSelectorModalVisible, setRunSelectorModalVisible ] = useState(false);
   const className = loading ? 'StatusBar StatusBar--busy' : 'StatusBar';
   return (
     <>
@@ -62,7 +61,7 @@ const StatusBar: React.FC<Props> = ({
           {getStatusItem({loading, lastError})}
         </div>
         <div className="StatusBar__side-right">
-          <StatusBarItem
+          {/* <StatusBarItem
             icon="Code"
             title="Select environment"
             disabled={loading}
@@ -71,7 +70,7 @@ const StatusBar: React.FC<Props> = ({
             button
           >
             Environment: {RuntimeType.toString(runtime)}
-          </StatusBarItem>
+          </StatusBarItem> */}
           <StatusBarItem
             icon="Feedback"
             title="Send feedback"
@@ -86,16 +85,6 @@ const StatusBar: React.FC<Props> = ({
           />
         </div>
       </div>
-      <EnvironmentSelectModal
-        value={runtime as RuntimeType}
-        isOpen={runSelectorModalVisible}
-        onClose={val => {
-          setRunSelectorModalVisible(false);
-          if (val) {
-            dispatch?.(newEnvironmentChangeAction(val));
-          }
-        }}
-      />
     </>
   );
 };
