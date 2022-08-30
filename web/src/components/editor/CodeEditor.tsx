@@ -14,13 +14,9 @@ import {
   formatFileDispatcher,
   newFileChangeAction,
   runFileDispatcher,
-  newSnippetLoadDispatcher,
-  newMarkerAction
+  newSnippetLoadDispatcher
 } from '~/store';
-import { Analyzer } from '~/services/analyzer';
 import { LANGUAGE_LESMA, stateToOptions } from './props';
-
-const ANALYZE_DEBOUNCE_TIME = 500;
 
 interface CodeEditorState {
   code?: string
@@ -36,7 +32,6 @@ interface CodeEditorState {
   vim: s.vim,
 }))
 export default class CodeEditor extends React.Component<any, CodeEditorState> {
-  private analyzer?: Analyzer;
   private _previousTimeout: any;
   private editorInstance?: editor.IStandaloneCodeEditor;
   private vimAdapter?: VimModeKeymap;
@@ -57,12 +52,6 @@ export default class CodeEditor extends React.Component<any, CodeEditorState> {
       this.vimAdapter.attach();
     }
 
-    if (Analyzer.supported()) {
-      this.analyzer = new Analyzer();
-    } else {
-      console.info('Analyzer requires WebAssembly support');
-    }
-
     const actions = [
       {
         id: 'clear',
@@ -74,7 +63,7 @@ export default class CodeEditor extends React.Component<any, CodeEditorState> {
       },
       {
         id: 'run-code',
-        label: 'Build And Run Code',
+        label: 'Run Code',
         contextMenuGroupId: 'navigation',
         keybindings: [
           monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter
@@ -83,17 +72,17 @@ export default class CodeEditor extends React.Component<any, CodeEditorState> {
           this.props.dispatch(runFileDispatcher);
         }
       },
-      {
-        id: 'format-code',
-        label: 'Format Code (goimports)',
-        contextMenuGroupId: 'navigation',
-        keybindings: [
-          monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KeyF
-        ],
-        run: (ed, ...args) => {
-          this.props.dispatch(formatFileDispatcher);
-        }
-      }
+      // {
+      //   id: 'format-code',
+      //   label: 'Format Code',
+      //   contextMenuGroupId: 'navigation',
+      //   keybindings: [
+      //     monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KeyF
+      //   ],
+      //   run: (ed, ...args) => {
+      //     this.props.dispatch(formatFileDispatcher);
+      //   }
+      // }
     ];
 
     // Register custom actions
@@ -118,34 +107,11 @@ export default class CodeEditor extends React.Component<any, CodeEditorState> {
   }
 
   componentWillUnmount() {
-    this.analyzer?.dispose();
     this.vimAdapter?.dispose();
   }
 
   onChange(newValue: string, _: editor.IModelContentChangedEvent) {
     this.props.dispatch(newFileChangeAction(newValue));
-
-    if (this.analyzer) {
-      this.doAnalyze(newValue);
-    }
-  }
-
-  private doAnalyze(code: string) {
-    if (this._previousTimeout) {
-      clearTimeout(this._previousTimeout);
-    }
-
-    this._previousTimeout = setTimeout(() => {
-      this._previousTimeout = null;
-      this.analyzer?.analyzeCode(code).then(({markers}) => {
-        editor.setModelMarkers(
-          this.editorInstance?.getModel() as editor.ITextModel,
-          this.editorInstance?.getId() as string,
-          markers
-        );
-        this.props.dispatch(newMarkerAction(markers))
-      }).catch(err => console.error('failed to perform code analysis: %s', err));
-    }, ANALYZE_DEBOUNCE_TIME);
   }
 
   private onKeyDown(e: IKeyboardEvent) {

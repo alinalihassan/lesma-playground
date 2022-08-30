@@ -1,6 +1,6 @@
 import {editor} from "monaco-editor";
 import {PanelState, SettingsState, UIState} from './state';
-import { RunResponse, EvalEvent } from '~/services/api';
+import { RunResponse } from '~/services/api';
 import { MonacoSettings, RuntimeType } from '~/services/config';
 
 export enum ActionType {
@@ -17,11 +17,6 @@ export enum ActionType {
   ENVIRONMENT_CHANGE = 'ENVIRONMENT_CHANGE',
   PANEL_STATE_CHANGE = 'PANEL_STATE_CHANGE',
   SETTINGS_CHANGE = 'SETTINGS_CHANGE',
-
-  // Special actions used by Go WASM bridge
-  EVAL_START = 'EVAL_START',
-  EVAL_EVENT = 'EVAL_EVENT',
-  EVAL_FINISH = 'EVAL_FINISH'
 }
 
 export interface Action<T = any, A = ActionType> {
@@ -111,12 +106,6 @@ export const newSettingsChangeAction = (changes: Partial<SettingsState>) => (
     payload: changes
   }
 );
-
-export const newProgramWriteAction = (event: EvalEvent) =>
-({
-  type: ActionType.EVAL_EVENT,
-  payload: event
-});
 
 export const newUIStateChangeAction = (changes: Partial<UIState>) =>
 ({

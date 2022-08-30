@@ -3,7 +3,7 @@
     {
       "label": "New Empty Test",
       "type": "test",
-      "text": "package main\n\nimport \"testing\"\n\nfunc TestExample(t *testing.T) {\n\tt.Log(\"this is unit test sample\")\n}\n"
+      "text": "def fibonacci(n: int) -> int\n\tif n < 2\n\t\treturn n\n\n\treturn fibonacci(n - 1) + fibonacci(n - 2)\n\nprint(\"Calculating the 40th fibonacci number:\")\n# Should be 102334155\nprint(fibonacci(40))"
     },
     {
       "label": "Example Test",

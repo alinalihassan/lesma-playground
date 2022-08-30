@@ -3,7 +3,6 @@ import './EvalEventView.css';
 
 const imageSectionPrefix = 'IMAGE:';
 const base64RegEx = /^[A-Za-z0-9+/]+[=]{0,2}$/;
-const nanosec = 1000000;
 
 interface ViewData {
   message: string,
@@ -11,8 +10,6 @@ interface ViewData {
   delay: number
   showDelay: boolean
 }
-
-const pad = (num: number, size: number) => ('000000000' + num).substr(-size);
 
 const isImageLine = (message: string) => {
   if (!message?.startsWith(imageSectionPrefix)) {
@@ -25,8 +22,8 @@ const isImageLine = (message: string) => {
 
 export default class EvalEventView extends React.Component<ViewData> {
   get delay() {
-    const msec = this.props.delay / nanosec;
-    return `T+${pad(msec, 4)}ms`
+    const msec = this.props.delay;
+    return `T+${msec.toFixed(3)}s`
   }
 
   get domClassName() {

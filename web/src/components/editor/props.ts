@@ -1,18 +1,10 @@
+import snippets from '@services/snippets';
 import * as monaco from 'monaco-editor';
 import { MonacoSettings } from '~/services/config';
 import { getFontFamily, getDefaultFontFamily } from '~/services/fonts';
 
 export const LANGUAGE_LESMA = 'lesma';
-
-export const DEMO_CODE = [
-  'package main\n',
-  'import (',
-  '\t"fmt"',
-  ')\n',
-  'func main() {',
-  '\tfmt.Println("Hello World")',
-  '}\n'
-].join('\n');
+export const DEMO_CODE = snippets["Templates"][0].text!
 
 // stateToOptions converts MonacoState to IEditorOptions
 export const stateToOptions = (state: MonacoSettings): monaco.editor.IEditorOptions => {

@@ -2,7 +2,7 @@ import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 import {editor} from 'monaco-editor';
 
-import { RunResponse, EvalEvent } from '~/services/api';
+import { RunResponse } from '~/services/api';
 import config, { MonacoSettings, RuntimeType } from '~/services/config'
 
 import vimReducers from './vim/reducers';
@@ -56,15 +56,6 @@ const reducers = {
     },
     [ActionType.LOADING]: (s: StatusState, _: Action<string>) => {
       return { ...s, loading: true }
-    },
-    [ActionType.EVAL_START]: (s: StatusState, _: Action) => {
-      return { lastError: null, loading: false, events: [] }
-    },
-    [ActionType.EVAL_EVENT]: (s: StatusState, a: Action<EvalEvent>) => {
-      return { lastError: null, loading: false, events: s.events?.concat(a.payload) }
-    },
-    [ActionType.EVAL_FINISH]: (s: StatusState, _: Action) => {
-      return { ...s, loading: false }
     },
     [ActionType.BUILD_PARAMS_CHANGE]: (s: StatusState, a: Action<BuildParamsArgs>) => {
       if (a.payload.runtime) {

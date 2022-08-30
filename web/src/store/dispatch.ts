@@ -150,17 +150,18 @@ export const runFileDispatcher: Dispatcher =
 
 export const formatFileDispatcher: Dispatcher =
   async (dispatch: DispatchFn, getState: StateProvider) => {
-    dispatch(newLoadingAction());
-    try {
-      const { editor: {code} } = getState();
-      const res = await client.formatCode(code);
+    console.log("No formatter for now :(");
+    // dispatch(newLoadingAction());
+    // try {
+    //   const { editor: {code} } = getState();
+    //   const res = await client.formatCode(code);
 
-      if (res.formatted) {
-        dispatch(newBuildResultAction(res));
-      }
-    } catch (err: any) {
-      dispatch(newErrorAction(err.message));
-    }
+    //   if (res.formatted) {
+    //     dispatch(newBuildResultAction(res));
+    //   }
+    // } catch (err: any) {
+    //   dispatch(newErrorAction(err.message));
+    // }
   };
 
 export const dispatchToggleTheme: Dispatcher =

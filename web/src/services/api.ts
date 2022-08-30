@@ -92,7 +92,7 @@ class Client implements IAPIClient {
   }
 
   async evaluateCode(code: string, format: boolean): Promise<RunResponse> {
-    return this.post<RunResponse>(`/run?format=${Boolean(format)}&backend=`, code);
+    return this.post<RunResponse>(`/run`, code);
   }
 
   async formatCode(code: string): Promise<RunResponse> {

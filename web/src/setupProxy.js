@@ -7,13 +7,13 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // See: Makefile
-const PROXY_HOST = process.env.LISTEN_ADDR || '127.0.0.1:18080';
+const PROXY_HOST = process.env.LISTEN_ADDR || 'localhost:18080';
 
 module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: `http://${PROXY_HOST}`,
+      target: `${PROXY_HOST}`,
       changeOrigin: true,
     })
   );

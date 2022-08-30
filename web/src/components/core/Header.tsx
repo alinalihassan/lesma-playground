@@ -147,17 +147,17 @@ export class Header extends ThemeableComponent<any, HeaderState> {
 
   get asideItems(): ICommandBarItemProps[] {
     return [
-      {
-        key: 'format',
-        text: 'Format Code',
-        ariaLabel: 'Format Code (Ctrl+Shift+F)',
-        iconOnly: true,
-        disabled: this.props.loading,
-        iconProps: { iconName: 'Code' },
-        onClick: () => {
-          this.props.dispatch(formatFileDispatcher);
-        }
-      },
+      // {
+      //   key: 'format',
+      //   text: 'Format Code',
+      //   ariaLabel: 'Format Code (Ctrl+Shift+F)',
+      //   iconOnly: true,
+      //   disabled: this.props.loading,
+      //   iconProps: { iconName: 'Code' },
+      //   onClick: () => {
+      //     this.props.dispatch(formatFileDispatcher);
+      //   }
+      // },
       {
         key: 'toggleTheme',
         text: 'Toggle Dark Mode',
