@@ -16,9 +16,7 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-EXPOSE 18080
-
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "18080"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0"]
