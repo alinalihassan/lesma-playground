@@ -19,12 +19,26 @@ jobs:
       - name: Set up Cloud SDK
         uses: 'google-github-actions/setup-gcloud@v0'
 
-      - name: Build image to GCR
+      # For Server
+      - name: Build server image to GCR
         run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground --gcs-log-dir=gs://lesma-playground-ci-logs
 
-      - id: 'deploy'
+      - id: 'deploy-server'
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
           service: 'lesma-playground'
           image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground'
+          region: europe-west3
+      
+      # For Client
+      - run: cd web
+
+      - name: Build client image to GCR
+        run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web --gcs-log-dir=gs://lesma-playground-ci-logs
+
+      - id: 'deploy-client'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'lesma-playground-web'
+          image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web'
           region: europe-west3
