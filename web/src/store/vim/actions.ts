@@ -1,5 +1,5 @@
 import {ConfirmMessage, VimState} from 'store/vim/state';
-import {Nullable} from "~/utils/types";
+import {Nullable} from "utils/types";
 
 export enum ActionType {
   VIM_INIT = 'VIM_INIT',
