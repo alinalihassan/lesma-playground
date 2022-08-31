@@ -12,7 +12,7 @@ import {
   newVimModeChangeAction,
   VimModeChangeArgs
 } from 'store/vim/actions';
-import {Nullable} from "~/utils/types";
+import {Nullable} from "utils/types";
 
 // This implementation is quite hacky, but still better than
 // having a huge list of all possible keys except printable.
