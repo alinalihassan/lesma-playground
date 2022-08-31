@@ -47,7 +47,7 @@ export function newImportFileDispatcher(f: File): Dispatcher {
 
 export function newCodeImportDispatcher(name: string, contents: string): Dispatcher {
   return (dispatch: DispatchFn, _: StateProvider) => {
-    dispatch(newImportFileAction(`${encodeURIComponent(name)}.go`, contents));
+    dispatch(newImportFileAction(`${encodeURIComponent(name)}.les`, contents));
   };
 }
 
@@ -89,7 +89,7 @@ export function newBuildParamsChangeDispatcher(runtime: RuntimeType, autoFormat:
 export function newSnippetLoadDispatcher(snippetID?: string): Dispatcher {
   return async (dispatch: DispatchFn, _: StateProvider) => {
     if (!snippetID) {
-      dispatch(newImportFileAction('prog.go', DEMO_CODE));
+      dispatch(newImportFileAction('prog.les', DEMO_CODE));
       return;
     }
 
@@ -141,7 +141,7 @@ export const runFileDispatcher: Dispatcher =
           dispatch(newBuildResultAction(res));
           break;
         default:
-          dispatch(newErrorAction(`AppError: Unknown Go runtime type "${settings.runtime}"`));
+          dispatch(newErrorAction(`AppError: Unknown Lesma runtime type "${settings.runtime}"`));
       }
     } catch (err: any) {
       dispatch(newErrorAction(err.message));

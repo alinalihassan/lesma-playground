@@ -7,9 +7,9 @@ import {supportsPreferColorScheme} from "~/utils/theme";
 
 const DARK_THEME_KEY = 'ui.darkTheme.enabled';
 const USE_SYSTEM_THEME_KEY = 'ui.darkTheme.useSystem';
-const RUNTIME_TYPE_KEY = 'go.build.runtime';
+const RUNTIME_TYPE_KEY = 'lesma.build.runtime';
 const ENABLE_VIM_MODE_KEY = 'ms.monaco.vimModeEnabled';
-const AUTOFORMAT_KEY = 'go.build.autoFormat';
+const AUTOFORMAT_KEY = 'lesma.build.autoFormat';
 const MONACO_SETTINGS = 'ms.monaco.settings';
 const PANEL_SETTINGS = 'ui.layout.panel';
 

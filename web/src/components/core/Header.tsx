@@ -11,7 +11,7 @@ import {
   Connect,
   Dispatcher,
   dispatchToggleTheme,
-  formatFileDispatcher,
+  // formatFileDispatcher,
   newBuildParamsChangeDispatcher,
   newCodeImportDispatcher,
   newImportFileDispatcher,
@@ -67,7 +67,7 @@ export class Header extends ThemeableComponent<any, HeaderState> {
   componentDidMount(): void {
     const fileElement = document.createElement('input') as HTMLInputElement;
     fileElement.type = 'file';
-    fileElement.accept = '.go';
+    fileElement.accept = '.les';
     fileElement.addEventListener('change', () => this.onItemSelect(), false);
     this.fileInput = fileElement;
   }

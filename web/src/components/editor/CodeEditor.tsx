@@ -11,7 +11,7 @@ import { attachCustomCommands } from './commands';
 
 import {
   Connect,
-  formatFileDispatcher,
+  // formatFileDispatcher,
   newFileChangeAction,
   runFileDispatcher,
   newSnippetLoadDispatcher

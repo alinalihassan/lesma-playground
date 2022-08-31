@@ -39,7 +39,7 @@ const reducers = {
 
       return s;
     },
-  }, { fileName: 'main.go', code: '' }),
+  }, { fileName: 'main.les', code: '' }),
   status: mapByAction<StatusState>({
     [ActionType.COMPILE_RESULT]: (s: StatusState, a: Action<RunResponse>) => {
       return {
@@ -131,7 +131,7 @@ export const getInitialState = (): State => ({
     loading: true
   },
   editor: {
-    fileName: 'prog.go',
+    fileName: 'prog.les',
     code: ''
   },
   settings: {
