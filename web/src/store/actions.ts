@@ -1,7 +1,7 @@
 import {editor} from "monaco-editor";
 import {PanelState, SettingsState, UIState} from './state';
-import { RunResponse } from '~/services/api';
-import { MonacoSettings, RuntimeType } from '~/services/config';
+import { RunResponse } from 'services/api';
+import { MonacoSettings, RuntimeType } from 'services/config';
 
 export enum ActionType {
   IMPORT_FILE = 'IMPORT_FILE',

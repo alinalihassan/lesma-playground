@@ -9,8 +9,8 @@ import {
 import { Modal } from '@fluentui/react/lib/Modal';
 import { Link } from '@fluentui/react/lib/Link';
 
-import { getContentStyles, getIconButtonStyles } from '~/styles/modal';
-import config from '~/services/config';
+import { getContentStyles, getIconButtonStyles } from 'styles/modal';
+import config from 'services/config';
 
 const TITLE_ID = 'AboutTitle';
 const SUB_TITLE_ID = 'AboutSubtitle';

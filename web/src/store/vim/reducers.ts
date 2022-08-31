@@ -1,6 +1,6 @@
-import { mapByAction} from '~/store/helpers';
-import { Nullable } from '~/utils/types';
-import { Action } from '~/store/actions';
+import { mapByAction} from 'store/helpers';
+import { Nullable } from 'utils/types';
+import { Action } from 'store/actions';
 import {VimState, VimMode, ConfirmMessage} from './state';
 import {ActionType, VimKeyPressArgs, VimModeChangeArgs} from './actions';
 

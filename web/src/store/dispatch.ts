@@ -14,11 +14,11 @@ import {
   newToggleThemeAction,
   newUIStateChangeAction
 } from './actions';
-import client from '~/services/api';
-import config, {RuntimeType} from '~/services/config';
-import {DEMO_CODE} from '~/components/editor/props';
+import client from 'services/api';
+import config, {RuntimeType} from 'services/config';
+import {DEMO_CODE} from 'components/editor/props';
 import {PanelState, SettingsState, State} from './state';
-import {isDarkModeEnabled} from "~/utils/theme";
+import {isDarkModeEnabled} from "utils/theme";
 
 export type StateProvider = () => State
 export type DispatchFn = (a: Action | any) => any

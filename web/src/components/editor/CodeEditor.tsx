@@ -6,7 +6,7 @@ import {
   VimModeKeymap,
   createVimModeAdapter,
   StatusBarAdapter
-} from '~/plugins/vim/editor';
+} from 'plugins/vim/editor';
 import { attachCustomCommands } from './commands';
 
 import {
@@ -15,7 +15,7 @@ import {
   newFileChangeAction,
   runFileDispatcher,
   newSnippetLoadDispatcher
-} from '~/store';
+} from 'store';
 import { LANGUAGE_LESMA, stateToOptions } from './props';
 
 interface CodeEditorState {

@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -25,7 +24,8 @@
     "typeRoots": [
       "src/types/monaco-vim",
       "node_modules/@types"
-    ]
+    ],
+    "baseUrl": "src"
   },
   "include": [
     "src"

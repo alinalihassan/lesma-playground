@@ -1,6 +1,6 @@
 import {editor, IKeyboardEvent, KeyCode} from 'monaco-editor';
 import VimModeKeymap from 'monaco-vim/lib/cm/keymap_vim';
-import {Dispatch} from '~/store/vim/state';
+import {Dispatch} from 'store/vim/state';
 
 import {
   newVimCommandDoneAction,
@@ -11,7 +11,7 @@ import {
   newVimKeyPressAction,
   newVimModeChangeAction,
   VimModeChangeArgs
-} from '~/store/vim/actions';
+} from 'store/vim/actions';
 import {Nullable} from "~/utils/types";
 
 // This implementation is quite hacky, but still better than

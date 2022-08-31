@@ -1,12 +1,12 @@
 import React from 'react';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
 
-import SettingsModal, { SettingsChanges } from '~/components/settings/SettingsModal';
-import ThemeableComponent from '@components/utils/ThemeableComponent';
-import AboutModal from '~/components/modals/AboutModal';
-import config from '~/services/config';
-import { getSnippetsMenuItems, SnippetMenuItem } from '~/utils/headerutils';
-// import SharePopup from '~/components/utils/SharePopup';
+import SettingsModal, { SettingsChanges } from 'components/settings/SettingsModal';
+import ThemeableComponent from 'components/utils/ThemeableComponent';
+import AboutModal from 'components/modals/AboutModal';
+import config from 'services/config';
+import { getSnippetsMenuItems, SnippetMenuItem } from 'utils/headerutils';
+// import SharePopup from 'components/utils/SharePopup';
 import {
   Connect,
   Dispatcher,
@@ -21,7 +21,7 @@ import {
   runFileDispatcher,
   saveFileDispatcher,
   // shareSnippetDispatcher
-} from '~/store';
+} from 'store';
 import './Header.css';
 
 /**

@@ -2,8 +2,8 @@ import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 import {editor} from 'monaco-editor';
 
-import { RunResponse } from '~/services/api';
-import config, { MonacoSettings, RuntimeType } from '~/services/config'
+import { RunResponse } from 'services/api';
+import config, { MonacoSettings, RuntimeType } from 'services/config'
 
 import vimReducers from './vim/reducers';
 import { Action, ActionType, FileImportArgs, BuildParamsArgs, MonacoParamsChanges } from './actions';

@@ -10,17 +10,17 @@ import {Pivot, PivotItem} from '@fluentui/react/lib/Pivot';
 // import {MessageBar, MessageBarType} from '@fluentui/react/lib/MessageBar';
 // import {Link} from '@fluentui/react/lib/Link';
 
-import ThemeableComponent from '@components/utils/ThemeableComponent';
-import {getContentStyles, getIconButtonStyles} from '~/styles/modal';
+import ThemeableComponent from 'components/utils/ThemeableComponent';
+import {getContentStyles, getIconButtonStyles} from 'styles/modal';
 import SettingsProperty from './SettingsProperty';
-import {MonacoSettings, RuntimeType} from '~/services/config';
-import {DEFAULT_FONT, getAvailableFonts} from '~/services/fonts';
+import {MonacoSettings, RuntimeType} from 'services/config';
+import {DEFAULT_FONT, getAvailableFonts} from 'services/fonts';
 import {
   BuildParamsArgs,
   Connect,
   MonacoParamsChanges,
   SettingsState
-} from '~/store';
+} from 'store';
 
 const CURSOR_BLINK_STYLE_OPTS: IDropdownOption[] = [
   { key: 'blink', text: 'Blink (default)' },

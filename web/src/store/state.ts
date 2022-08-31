@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import {editor} from "monaco-editor";
-import { EvalEvent } from '~/services/api';
-import { MonacoSettings, RuntimeType } from '~/services/config';
-import {LayoutType} from '~/styles/layout';
-import { VimState } from '~/store/vim/state';
+import { EvalEvent } from 'services/api';
+import { MonacoSettings, RuntimeType } from 'services/config';
+import {LayoutType} from 'styles/layout';
+import { VimState } from 'store/vim/state';
 
 export interface UIState {
   shareCreated?: boolean

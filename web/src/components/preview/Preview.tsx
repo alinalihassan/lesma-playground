@@ -1,11 +1,11 @@
 import React from 'react';
 import { MessageBar, MessageBarType } from '@fluentui/react';
 
-import ThemeableComponent from '@components/utils/ThemeableComponent';
-import { getDefaultFontFamily } from '~/services/fonts';
-import { Connect } from '~/store';
-import { RuntimeType } from '~/services/config';
-import { EvalEvent } from '~/services/api';
+import ThemeableComponent from 'components/utils/ThemeableComponent';
+import { getDefaultFontFamily } from 'services/fonts';
+import { Connect } from 'store';
+import { RuntimeType } from 'services/config';
+import { EvalEvent } from 'services/api';
 import EvalEventView from './EvalEventView';
 import './Preview.css';
 

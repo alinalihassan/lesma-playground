@@ -7,8 +7,8 @@ import {
   supportsPreferColorScheme,
   ThemeVariant,
   usePrefersColorScheme
-} from '~/utils/theme';
-import {newSettingsChangeAction, SettingsState} from '~/store';
+} from 'utils/theme';
+import {newSettingsChangeAction, SettingsState} from 'store';
 
 interface Props extends ThemeProviderProps {
   settings?: SettingsState

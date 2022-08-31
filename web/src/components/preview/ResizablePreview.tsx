@@ -10,8 +10,8 @@ import {
 } from 'react-icons/vsc';
 
 import Preview from './Preview';
-import PanelHeader from '~/components/core/Panel/PanelHeader';
-import {LayoutType, DEFAULT_PANEL_HEIGHT, DEFAULT_PANEL_WIDTH} from '~/styles/layout';
+import PanelHeader from 'components/core/Panel/PanelHeader';
+import {LayoutType, DEFAULT_PANEL_HEIGHT, DEFAULT_PANEL_WIDTH} from 'styles/layout';
 import './ResizablePreview.css';
 
 const MIN_HEIGHT = 36;

@@ -1,9 +1,9 @@
 import { loadTheme } from '@fluentui/react';
 import { DEFAULT_FONT } from './fonts';
 import { DarkTheme, LightTheme } from './colors';
-import {PanelState} from '~/store';
-import { defaultPanelProps } from '~/styles/layout';
-import {supportsPreferColorScheme} from "~/utils/theme";
+import {PanelState} from 'store';
+import { defaultPanelProps } from 'styles/layout';
+import {supportsPreferColorScheme} from "utils/theme";
 
 const DARK_THEME_KEY = 'ui.darkTheme.enabled';
 const USE_SYSTEM_THEME_KEY = 'ui.darkTheme.useSystem';

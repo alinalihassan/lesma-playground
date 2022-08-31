@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {editor} from 'monaco-editor';
-// import {newEnvironmentChangeAction} from '~/store';
-import config, {RuntimeType} from '~/services/config';
-import EllipsisText from '~/components/utils/EllipsisText';
-import StatusBarItem from '~/components/core/StatusBar/StatusBarItem';
-import VimStatusBarItem from '~/plugins/vim/VimStatusBarItem';
+// import {newEnvironmentChangeAction} from 'store';
+import config, {RuntimeType} from 'services/config';
+import EllipsisText from 'components/utils/EllipsisText';
+import StatusBarItem from 'components/core/StatusBar/StatusBarItem';
+import VimStatusBarItem from 'plugins/vim/VimStatusBarItem';
 import './StatusBar.css';
 
 interface Props {

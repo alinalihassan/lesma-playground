@@ -4,11 +4,11 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from "react-router-dom";
 
 import { configureStore } from './store';
-import { history } from '~/store/configure';
-import config from './services/config';
-import Playground from '~/components/pages/Playground';
-import NotFoundPage from "~/components/pages/NotFoundPage";
-import ConnectedThemeProvider from '~/components/utils/ConnectedThemeProvider';
+import { history } from 'store/configure';
+import config from 'services/config';
+import Playground from 'components/pages/Playground';
+import NotFoundPage from "components/pages/NotFoundPage";
+import ConnectedThemeProvider from 'components/utils/ConnectedThemeProvider';
 import './App.css';
 
 // Configure store and import config from localStorage

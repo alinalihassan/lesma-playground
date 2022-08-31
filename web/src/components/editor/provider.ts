@@ -1,5 +1,5 @@
 import * as monaco from 'monaco-editor';
-import { IAPIClient } from '~/services/api';
+import { IAPIClient } from 'services/api';
 import { LANGUAGE_LESMA } from './props';
 
 let alreadyRegistered = false;

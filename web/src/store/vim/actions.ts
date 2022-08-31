@@ -1,4 +1,4 @@
-import {ConfirmMessage, VimState} from '~/store/vim/state';
+import {ConfirmMessage, VimState} from 'store/vim/state';
 import {Nullable} from "~/utils/types";
 
 export enum ActionType {
