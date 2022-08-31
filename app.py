@@ -14,7 +14,7 @@ class RunRequest(BaseModel):
     body: str
 
 @app.post("/api/run")
-def hello_world(req: RunRequest):
+def run_code(req: RunRequest):
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp.write(req.body.encode())
         tmp.close()
