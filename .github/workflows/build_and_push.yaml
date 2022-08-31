@@ -20,7 +20,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: Build image to GCR
-        run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground --verbosity=debug
+        run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground --gcs-log-dir=gs://lesma-playground-ci-logs
 
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloudrun@v0'
