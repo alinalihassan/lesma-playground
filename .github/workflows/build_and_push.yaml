@@ -19,43 +19,24 @@ jobs:
       - name: Set up Cloud SDK
         uses: 'google-github-actions/setup-gcloud@v0'
 
-      - name: Login to Github Packages
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       # For Server
-      - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: alinalihassan/lesma-playground:latest
-      # - name: Build server image to GCR
-      #   run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground --gcs-log-dir=gs://lesma-playground-ci-logs
+      - name: Build server image to GCR
+        run: gcloud builds submit --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground --gcs-log-dir=gs://lesma-playground-ci-logs
 
-      # - id: 'deploy-server'
-      #   uses: 'google-github-actions/deploy-cloudrun@v0'
-      #   with:
-      #     service: 'lesma-playground'
-      #     image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground'
-      #     region: europe-west3
+      - id: 'deploy-server'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'lesma-playground'
+          image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground'
+          region: europe-west3
       
       # For Client
-      # - name: Build client image to GCR
-        # run: gcloud builds submit web/ --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web --gcs-log-dir=gs://lesma-playground-ci-logs
-      
-      - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          context: ./web
-          tags: alinalihassan/lesma-playground-web:latest
+      - name: Build client image to GCR
+        run: gcloud builds submit web/ --tag gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web --gcs-log-dir=gs://lesma-playground-ci-logs
 
-      # - id: 'deploy-client'
-      #   uses: 'google-github-actions/deploy-cloudrun@v0'
-      #   with:
-      #     service: 'lesma-playground-web'
-      #     image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web'
-      #     region: europe-west3
+      - id: 'deploy-client'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'lesma-playground-web'
+          image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground-web'
+          region: europe-west3
