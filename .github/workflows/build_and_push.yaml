@@ -27,3 +27,4 @@ jobs:
         with:
           service: 'lesma-playground'
           image: 'gcr.io/${{ secrets.GOOGLE_CLOUD_PROJECT }}/lesma-playground'
+          region: europe-west3
