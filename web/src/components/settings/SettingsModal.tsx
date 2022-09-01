@@ -174,7 +174,7 @@ export default class SettingsModal extends ThemeableComponent<SettingsProps, Set
                   />
                 )}
               />
-              <SettingsProperty
+              {/* <SettingsProperty
                 key='autoFormat'
                 title='Auto Format'
                 control={<Checkbox
@@ -187,7 +187,7 @@ export default class SettingsModal extends ThemeableComponent<SettingsProps, Set
                     };
                   }}
                 />}
-              />
+              /> */}
               <SettingsProperty
                 key='enableVimMode'
                 title='Enable Vim Mode'
