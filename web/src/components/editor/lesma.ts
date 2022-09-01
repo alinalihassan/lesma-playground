@@ -42,7 +42,7 @@ export const conf: languages.LanguageConfiguration = {
 
 export const language: languages.IMonarchLanguage = {
   defaultToken: "",
-  tokenPostfix: ".lesma",
+  tokenPostfix: ".les",
 
   keywords: [
     "false",
@@ -83,7 +83,13 @@ export const language: languages.IMonarchLanguage = {
     "yield",
 
     "int",
+    "int8",
+    "int16",
+    "int32",
+    "int64",
     "float",
+    "float32",
+    "void",
 
     "bool",
     "char",
