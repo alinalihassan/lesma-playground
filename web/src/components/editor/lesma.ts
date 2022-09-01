@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import { languages } from "monaco-editor";
 
 export const conf: languages.LanguageConfiguration = {
@@ -50,16 +45,16 @@ export const language: languages.IMonarchLanguage = {
   tokenPostfix: ".lesma",
 
   keywords: [
-    "false", // promoted to keyword.kwlist in Python 3
-    "null", // promoted to keyword.kwlist in Python 3
-    "true", // promoted to keyword.kwlist in Python 3
+    "false",
+    "null",
+    "true",
     "and",
     "as",
     "assert",
-    "async", // new in Python 3
-    "await", // new in Python 3
+    "async",
+    "await",
     "break",
-    "case", // new in Python 3.10
+    "case",
     "class",
     "continue",
     "def",
@@ -134,25 +129,25 @@ export const language: languages.IMonarchLanguage = {
     whitespace: [
       [/\s+/, "white"],
       [/(^#.*$)/, "comment"],
-      [/'''/, "string", "@endDocString"],
-      [/"""/, "string", "@endDblDocString"],
+      // [/'''/, "string", "@endDocString"],
+      // [/"""/, "string", "@endDblDocString"],
     ],
-    endDocString: [
-      [/[^']+/, "string"],
-      [/\\'/, "string"],
-      [/'''/, "string", "@popall"],
-      [/'/, "string"],
-    ],
-    endDblDocString: [
-      [/[^"]+/, "string"],
-      [/\\"/, "string"],
-      [/"""/, "string", "@popall"],
-      [/"/, "string"],
-    ],
+    // endDocString: [
+    //   [/[^']+/, "string"],
+    //   [/\\'/, "string"],
+    //   [/'''/, "string", "@popall"],
+    //   [/'/, "string"],
+    // ],
+    // endDblDocString: [
+    //   [/[^"]+/, "string"],
+    //   [/\\"/, "string"],
+    //   [/"""/, "string", "@popall"],
+    //   [/"/, "string"],
+    // ],
 
     // Recognize hex, negatives, decimals, imaginaries, longs, and scientific notation
     numbers: [
-      [/-?0x([abcdef]|[ABCDEF]|\d)+[lL]?/, "number.hex"],
+      // [/-?0x([abcdef]|[ABCDEF]|\d)+[lL]?/, "number.hex"],
       [/-?(\d*\.)?\d+([eE][+-]?\d+)?[jJ]?[lL]?/, "number"],
     ],
 
