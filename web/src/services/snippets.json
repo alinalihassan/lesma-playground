@@ -1,189 +1,40 @@
 {
   "Templates": [
     {
-      "label": "New Empty Test",
-      "type": "test",
-      "text": "def fibonacci(n: int) -> int\n\tif n < 2\n\t\treturn n\n\n\treturn fibonacci(n - 1) + fibonacci(n - 2)\n\nprint(\"Calculating the 40th fibonacci number:\")\n# Should be 102334155\nprint(fibonacci(40))"
-    },
-    {
-      "label": "Example Test",
-      "type": "test",
-      "snippet": "GFuPdlBlyMU"
-    },
-    {
       "label": "Hello World",
-      "snippet": "NeviD0awXjt"
+      "text": "print(\"Hello World\")"
     }
   ],
   "Basic Examples": [
     {
       "label": "Hello World",
-      "snippet": "NeviD0awXjt"
-    },
-    {
-      "label": "Maps",
-      "snippet": "agK2Ro2i-Lu"
-    },
-    {
-      "label": "Sorting",
-      "snippet": "_gY0tANzJ4l"
-    },
-    {
-      "label": "Custom sort",
-      "snippet": "h4g4vaLBtkw"
+      "text": "print(\"Hello World\")"
     },
     {
       "label": "Recursion",
-      "snippet": "smWim1q9ofu"
+      "text": "def fibonacci(n: int) -> int\n\tif n < 2\n\t\treturn n\n\n\treturn fibonacci(n - 1) + fibonacci(n - 2)\n\nprint(\"Calculating the 40th fibonacci number:\")\n# Should be 102334155\nprint(fibonacci(40))"
     },
     {
-      "label": "Structs & methods",
-      "snippet": "4wmDCAydC1e"
+      "label": "C Functions (FFI)",
+      "text": "def extern strlen(x: str) -> int\n\nprint(strlen(\"Hello World\"))"
     },
     {
-      "label": "Interfaces",
-      "snippet": "XJASG4MxBQr"
-    },
-    {
-      "label": "Generics",
-      "snippet": "-HOv2JpMQih"
-    },
-    {
-      "label": "Errors",
-      "snippet": "NiJOpCPO3L0"
+      "label": "Classes",
+      "text": "class Animal\n\tvar animal_type: str\n\n\tdef new(animal_type: str)\n\t\tself.animal_type = animal_type\n\nlet cat = Animal(\"cat\")\nprint(cat.animal_type)"
     },
     {
       "label": "Defer",
-      "snippet": "5SDVfc_jxbg"
-    },
-    {
-      "label": "Panic & recover",
-      "snippet": "Sk-SVdofEIZ"
+      "text": "defer print(\"I'm last\")\nprint(\"Im first\")"
     }
   ],
-  "Playground features": [
+  "Complete Examples": [
     {
-      "label": "Display image",
-      "snippet": "XN6x3L23Vok",
-      "icon": "FileImage"
+      "label": "String Class",
+      "text": "# Let's make our own String class!\n\ndef extern malloc(size: int) -> *int8\ndef extern strcpy(dest: str, src: str) -> str\ndef extern strlen(src: str) -> int\n\nclass String\n\tvar x: str\n\tvar length: int\n\tvar capacity: int\n\n\tdef new(x: str)\n\t\tself.length = strlen(x)\n\t\tself.capacity = self.length\n\t\tself.x = malloc(self.capacity) as str\n\t\tstrcpy(self.x, x)\n\nlet my_class = String(\"Hello World!\")\nprint(my_class.x)"
     },
     {
-      "label": "WebAssembly",
-      "snippet": "NCdgXZrYSk4",
-      "icon": "JS"
-    }
-  ],
-  "Concurrency": [
-      {
-        "label": "Goroutines",
-        "snippet": "I7scqRijEJt"
-      },
-      {
-        "label": "Channels",
-        "snippet": "MaLY7AiAkHM"
-      },
-      {
-        "label": "Buffered channels",
-        "snippet": "3BRCdRnRszb"
-      },
-      {
-        "label": "Select",
-        "snippet": "FzONhs4-tae"
-      },
-      {
-        "label": "Timeouts",
-        "snippet": "4oOz0j29MJ6"
-      },
-      {
-        "label": "Non-blocking channel operations",
-        "snippet": "TFv6-7OVNVq"
-      },
-      {
-        "label": "Closing channels",
-        "snippet": "yQMclmwOYs9"
-      },
-      {
-        "label": "Timers",
-        "snippet": "gF7VLRz3URM"
-      },
-      {
-        "label": "Tickers",
-        "snippet": "gs6zoJP-Pl9"
-      },
-      {
-        "label": "Worker pools",
-        "snippet": "hiSJJsYZJKL"
-      },
-      {
-        "label": "Rate limit",
-        "snippet": "20c_m1AtOEI"
-      },
-      {
-        "label": "Atomics",
-        "snippet": "j-14agntvEO"
-      },
-      {
-        "label": "Mutexes",
-        "snippet": "0WEmOOjoCjp"
-      },
-      {
-        "label": "Stateful goroutines",
-        "snippet": "5mf_P9xqBzk"
-      },
-      {
-        "label": "Context",
-        "snippet": "0_bu1o8rIBO"
-      }
-  ],
-  "Other examples": [
-    {
-      "label": "Random number",
-      "snippet": "PGklfJzErTN"
-    },
-    {
-      "label": "Number parsing",
-      "snippet": "ZAMEid6Fpmu"
-    },
-    {
-      "label": "Regular expressions",
-      "snippet": "LEKGY_d3Nu_P"
-    },
-    {
-      "label": "JSON",
-      "snippet": "JOQpRGJWAxR"
-    },
-    {
-      "label": "HTTP Client",
-      "snippet": "kHCcVLoz7nd"
-    },
-    {
-      "label": "Time",
-      "snippet": "YAM3s1KPc8c"
-    },
-    {
-      "label": "Time formatting",
-      "snippet": "BoZYtr_2j66"
-    },
-    {
-      "label": "SHA1 hash",
-      "snippet": "XLftf8Gvj4y"
-    },
-    {
-      "label": "Base64 encoding",
-      "snippet": "S7ff3UgzNlG"
-    },
-    {
-      "label": "Writing files",
-      "snippet": "fQ7sd4gXv0F"
-    },
-    {
-      "label": "Reading files",
-      "snippet": "kF0cDC0drsX"
-    },
-    {
-      "label": "Signals",
-      "snippet": "YRV64KEXJW1"
+      "label": "Guessing Game",
+      "text": "print(\"Guess the number! 🎰\")\n\nlet secret_number = random(1, 101)\n\nwhile true\n\tlet guess = input(\"Please input your guess: \")\n\tlet guessed_number = strToInt(guess)\n\n\tif guessed_number > secret_number\n\t\tprint(\"Too big!\")\n\telse if guessed_number < secret_number\n\t\tprint(\"Too small\")\n\telse\n\t\tprint(\"You win!\")\n\t\tbreak"
     }
   ]
-
 }
