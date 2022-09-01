@@ -23,6 +23,10 @@
       "text": "from time import sleep\n\nsleep(0.5)\nprint(\"Phew! That took a while!\")"
     },
     {
+      "label": "Enums",
+      "text": "enum Color\n\tRED\n\tBLUE\n\tGREEN\n\nvar favorite_color: Color = Color.RED\n\ndef isRed(color: Color) -> bool\n\treturn color == Color.RED\n\nprint(isRed(favorite_color))"
+    },
+    {
       "label": "Classes",
       "text": "class Animal\n\tvar animal_type: str\n\n\tdef new(animal_type: str)\n\t\tself.animal_type = animal_type\n\nlet cat = Animal(\"cat\")\nprint(cat.animal_type)"
     },
