@@ -19,6 +19,10 @@
       "text": "def extern strlen(x: str) -> int\n\nprint(strlen(\"Hello World\"))"
     },
     {
+      "label": "Imports",
+      "text": "from time import sleep\n\nsleep(0.5)\nprint(\"Phew! That took a while!\")"
+    },
+    {
       "label": "Classes",
       "text": "class Animal\n\tvar animal_type: str\n\n\tdef new(animal_type: str)\n\t\tself.animal_type = animal_type\n\nlet cat = Animal(\"cat\")\nprint(cat.animal_type)"
     },
