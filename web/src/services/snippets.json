@@ -28,7 +28,7 @@
     },
     {
       "label": "Defer",
-      "text": "defer print(\"I'm last\")\nprint(\"Im first\")"
+      "text": "defer print(\"I'm last\")\nprint(\"I'm first\")"
     }
   ],
   "Complete Examples": [
