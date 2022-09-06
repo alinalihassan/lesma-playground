@@ -21,7 +21,7 @@ def run_code(req: RunRequest):
 
         timeStarted = time.time()
         try:
-            out = check_output(["lesma", "run", tmp.name])
+            out = check_output(["/root/.lesma/bin/lesma", "run", tmp.name])
             timeEnded = time.time()
             os.remove(tmp.name)
             
