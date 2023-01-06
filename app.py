@@ -18,28 +18,29 @@ class RunRequest(BaseModel):
 
 @app.post("/api/run")
 def run_code(req: RunRequest):
+    """Expect body to contain the Lesma code, runs it, and then returns details about execution"""
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp.write(req.body.encode())
         tmp.close()
 
-        timeStarted = time.time()
+        time_started = time.time()
         try:
             out = check_output(["lesma", "run", tmp.name])
-            timeEnded = time.time()
+            time_ended = time.time()
             os.remove(tmp.name)
 
             return {"events": [{
-                "Delay": timeEnded - timeStarted,
+                "Delay": time_ended - time_started,
                 "Message": out.decode("utf-8"),
                 "Kind": "stdout"
             }]}
-        except CalledProcessError as e:
-            timeEnded = time.time()
-            print(f"Error: {e.output}")
+        except CalledProcessError as error:
+            time_ended = time.time()
+            print(f"Error: {error.output}")
             os.remove(tmp.name)
 
             return {"events": [{
-                "Delay": timeEnded - timeStarted,
-                "Message": e.output,
+                "Delay": time_ended - time_started,
+                "Message": error.output,
                 "Kind": "stderr"
             }]}
