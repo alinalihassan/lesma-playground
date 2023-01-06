@@ -29,7 +29,7 @@ const App = () => {
               exact
               component={Playground}
             />
-            <Route path="*" component={NotFoundPage}/>
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </ConnectedThemeProvider>
       </ConnectedRouter>

@@ -1,5 +1,10 @@
 # Lesma Playground
 
+## Command to run
+```bash
+python -m uvicorn app:app --reload --host 0.0.0.0 --port 18080
+```
+
 ## Commands to run in VM Instance
 ```bash
 pm2 resurrect
